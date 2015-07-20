@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<script src="./js/jquery-1.11.3.js" type="text/javascript"></script> 
+	<!-- 注意引入js错误 -->
+	<!-- <link rel="stylesheet" href="./js/jquery-1.11.3.js"> -->
+	<!-- <link rel="stylesheet" href="./js/bootstrap.min.js"> -->
+	<link rel="stylesheet" href="./js/bootstrap.min.css">
+	<link rel="stylesheet" href="./js/style.css">
+	<title>question_1</title>
+	<!-- 适当的绘制和触屏缩放 -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
+<body>
+	<div class="container">
+
+		<div class="row">
+			<div class="col-md-6" id="question_1">问题1</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-6" id="q1">
+			&nbsp;在你的理解中，你觉得公司更像什么？
+			</div>
+		</div>
+			<div class="row">
+				<form action="deal.php" method="post">
+					<div class="con">
+						<div class="col-md-2" id="a">
+								A.&nbsp;学校 &nbsp;
+								<input type="radio" id="aa" name="chose" value="学校">&nbsp;&nbsp;
+								B.&nbsp;家庭 &nbsp;
+								<input type="radio" name="chose" value="家庭">
+						</div>
+
+<!-- 						<div class="col-md-2" id="b">
+								B.&nbsp;&nbsp;&nbsp;&nbsp;家庭 &nbsp;&nbsp;
+								<input type="radio" name="chose" value="家庭">
+						</div> -->
+
+						<div class="col-md-2" id="c">
+								C.&nbsp;乐园 &nbsp;
+								<input type="radio" name="chose" value="乐园" checked="checked">&nbsp;&nbsp;
+								D.&nbsp;其他 &nbsp;
+								<input type="radio" name="chose" id="tt" value="其他" onselect="">
+						</div>
+<!-- 
+						<div class="col-md-2" id="d">
+								D.&nbsp;&nbsp;&nbsp;&nbsp;其他 &nbsp;&nbsp;
+								<input type="radio" name="chose" id="tt" value="其他" onselect="">
+						</div> -->
+					</div>
+			</div>
+						<div class="col-md-2" id="dd">
+								<input type="textarea" name="" id="jy" placeholder="请输入您的想法" >
+						</div>
+
+						<br>
+
+						<div class="col-md-2" id="sub">
+								<input type="submit" value="提交" onclick="hello()" >
+						</div>
+				</form>
+	<script>
+
+	function hello()
+	{
+		var aa = document.getElementById('jy');
+		if (aa.style.display == 'block') 
+		{
+			if(aa.value != "")	
+			{
+				document.getElementById('tt').value = aa.value;
+				alert("谢谢您的反馈！");
+			}
+			else{
+				alert('请输入内容！');
+			}	
+		}
+		else{
+			alert("谢谢您的反馈！");
+			//alert(document.getElementById('tt').value);
+		}
+		//console.log(document.getElementById('tt').value);
+	}
+		//jquery绑定事件，当radio值发生变化时触发行为
+ 
+	$(document).ready(function() {  
+ 
+    //主要 .bind() 事件代码例子： 
+    //input标签[标签名称='指定的名称'].绑定函数("事件",自定义函数(){  操作代码...  }); 
+    //$("input[name='radio_tj']").bind("click",function(){ alert($(this).val()); }); 
+    $("input[name='chose']").bind("click",function(){ 
+         
+        //测试操作代码 
+        //alert($(this).val()); 
+        var $selectedvalue = $(this).val(); 
+        if ($selectedvalue == '其他') {  
+            document.getElementById('jy').style.display='block';
+            //document.getElementById('tt').value = document.getElementById('jy').value;
+        } 
+
+        else {   
+            document.getElementById('jy').style.display='none';
+        }  
+    }); 
+     
+});
+	</script>
+</body>
+</html>
